@@ -18,7 +18,7 @@ and a refined overall score (omega') from table_uniformity.py.
 from typing import List
 from csv_dialect import Dialect
 from table_def import table_constructor 
-from table_uniformity import t_uniformity
+from table_uniformity_MAD_EPY import t_uniformity
 
 class t_score:
     """

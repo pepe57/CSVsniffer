@@ -39,11 +39,11 @@ class t_uniformity:
         self,
         table: list,  # list[list[str]]
         dialect: Dialect, 
-        lambda_sum: float
+        lambda_sum: float = 0
     ) -> None:
         self.table = table
         self.dialect = dialect
-        self.lambda_sum = 0
+        self.lambda_sum = lambda_sum
 
     def validate(self) -> None:
         if self.table is None:
@@ -196,5 +196,5 @@ class t_uniformity:
         n = len(self.table)
         if tau_1 + n == 0 or tau_3 + 1 == 0:
             return 0.0
-        score = (tau_0 / delta) + (1 / (tau_1 + n)) + (tau_2 / n) + (1 / ((1 + tau_3) * n)) * lambda_sum
+        score = (tau_0 / delta) + (1 / (tau_1 + n)) + (tau_2 / delta) + (1 / ((1 + tau_3) * n)) * lambda_sum
         return score

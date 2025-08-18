@@ -18,7 +18,7 @@ Enhanced with a twist: Incorporates Bayesian prior in dialect scoring for improv
 from typing import List
 from typing import Union
 from csv_dialect import Dialect
-from table_score import t_score
+from table_score_MAD_EPY import t_score
 from potential_dialects import p_dialects
 
 class sniffer:
