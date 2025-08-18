@@ -23,32 +23,33 @@ The expect configuration for each tested CSV is saved in the `Dialect_annotation
 
 ## Results
 
-In this section, the results after running tests with the Beta Python implementation of the _Table Uniformity_ method are presented. In order to obtain more representative performance metrics, it was decided to run the tests on a system running Linux Mint.
+In this section, the results after running tests with the Beta Python implementation of the _Table Uniformity_ method are presented. In order to obtain more representative performance metrics, it was decided to measure scripts running time on a Linux Mint system. All other metrics were obtained from a Windows 10 system. We have introduced a variant of the Table Uniformity Method that uses new metrics, including Mean Absolute Deviation and Shannon Entropy. These metrics will appear under the heading **`CSVsniffer MADSE`**.
 
 The table below shows the dialect detection success ratio for `CSVsniffer`, `CleverCSV` and the built-in Python `csv.Sniffer` class module. Note that the accuracy has been measured using only those files that do not produce a failure when attempting to infer CSV dialects
 
-|Data set                    |`CSVsniffer` |`CleverCSV`|`csv.Sniffer`|DuckDB `sniff_csv`|
-|:---------------------------|:------------|:----------|:------------|:-----------------|
-|POLLOCK                     |96.5517%     |95.1724%   |96.3504%     |84.1379%          |
-|CSV Wrangling               |90.5660%     |84.3137%   |80.5556%     |76.8212%          |
-|CSV Wrangling filtered CODEC|89.4737%     |84.2520%   |80.0000%     |78.0303%          |
-|CSV Wrangling MESSY         |78.1955%     |71.6535%   |66.6667%     |65.9091%          |
-|W3C-CSVW                    |95.3917%     |61.1111%   |97.6923%     |99.0783%          |
+|Data set                    |`CSVsniffer MADSE`|`CSVsniffer` |`CleverCSV`|`csv.Sniffer`|DuckDB `sniff_csv`|
+|:---------------------------|:-----------------|:------------|:----------|:------------|:-----------------|
+|POLLOCK                     |95.2703%          |96.5517%     |95.1724%   |96.3504%     |84.1379%          |
+|CSV Wrangling               |90.3226%          |90.5660%     |84.3137%   |80.5556%     |76.8212%          |
+|CSV Wrangling filtered CODEC|91.5493%          |89.4737%     |84.2520%   |80.0000%     |78.0303%          |
+|CSV Wrangling MESSY         |80.2817%          |78.1955%     |71.6535%   |66.6667%     |65.9091%          |
+|W3C-CSVW                    |94.5205%          |95.3917%     |61.1111%   |97.6923%     |99.0783%          |
 
 The table below shows the failure ratio for each tool.
 
-|Data set                                |`CSVsniffer` |`CleverCSV`|`csv.Sniffer`|DuckDB `sniff_csv`|
-|:---------------------------------------|:------------|:----------|:------------|:-----------------|
-|POLLOCK [148 files]                     |2.0270%      |2.0270%    |7.4324%      |2.027%            |
-|CSV Wrangling [179 files]               |11.1732%     |14.5251%   |19.5531%     |15.6425%          |
-|CSV Wrangling filtered CODEC [142 files]|6.3380%      |10.5634%   |15.4930%     |7.0423%           |
-|CSV Wrangling MESSY [126 files]         |6.3380%      |10.5634%   |15.4930%     |7.0423%           |
-|W3C-CSVW [221 files]                    |1.8100%      |2.2624%    |41.1765%     |1.81%             |
+|Data set                                |`CSVsniffer MADSE`|`CSVsniffer` |`CleverCSV`|`csv.Sniffer`|DuckDB `sniff_csv`|
+|:---------------------------------------|:-----------------|:------------|:----------|:------------|:-----------------|
+|POLLOCK [148 files]                     |0.0%              |2.0270%      |2.0270%    |7.4324%      |2.027%            |
+|CSV Wrangling [179 files]               |13.4078%          |11.1732%     |14.5251%   |19.5531%     |15.6425%          |
+|CSV Wrangling filtered CODEC [142 files]|0.0%              |6.3380%      |10.5634%   |15.4930%     |7.0423%           |
+|CSV Wrangling MESSY [126 files]         |0.0%              |6.3380%      |10.5634%   |15.4930%     |7.0423%           |
+|W3C-CSVW [221 files]                    |0.905%            |1.8100%      |2.2624%    |41.1765%     |1.81%             |
 
 The following table shows the average success and failure ratio for selected tools. The higher the number of errors obtained, the lower the reliability for detection.
 
 |Tool               |Success ratio (SR)|Failure ratio  (FR)|
 |:------------------|:-----------------|:------------------|
+|`CSVsniffer MADSE` |90.39%            |2.86%              |
 |`CSVsniffer`       |90.04%            |5.54%              |
 |DuckDB `sniff_csv` |80.80%            |6.71%              |
 |`CleverCSV`        |79.30%            |7.99%              |
@@ -59,6 +60,7 @@ $$RF=SR\times (1-FR)$$.
 
 |Tool               |Reliability factor (RF)|
 |:------------------|:----------------------|
+|`CSVsniffer MADSE` |87.80%                 |
 |`CSVsniffer`       |85.05%                 |
 |DuckDB `sniff_csv` |75.38%                 |
 |`CleverCSV`        |72.96%                 |
@@ -80,38 +82,37 @@ For dialect detection, we have defined _True Positive_ (TP) as the number of CSV
 The next table shows the precision (P), which measures the accuracy of dialect detection when predicting a specific dialect. The metric is calculated as follows
 
 $$P=\frac{TP}{TP+FP}$$
-
-|Data set                     |`CSVsniffer` |`CleverCSV`|`csv.Sniffer`|DuckDB `sniff_csv`|
-|:----------------------------|:------------|:----------|:------------|:-----------------|
-|POLLOCK                      |0.9655       |0.9517     |0.9635       |0.8414            |
-|CSV Wrangling                |0.9057       |0.8431     |0.8056       |0.7682            |
-|CSV Wrangling filtered CODEC |0.8947       |0.8425     |0.8000       |0.7803            |
-|CSV Wrangling MESSY          |0.7820       |0.7165     |0.6667       |0.6591            |
-|W3C-CSVW                     |0.9539       |0.6111     |0.9769       |0.9908            |
+|Data set                     |`CSVsniffer MADSE`|`CSVsniffer` |`CleverCSV`|`csv.Sniffer`|DuckDB `sniff_csv`|
+|:----------------------------|:-----------------|:------------|:----------|:------------|:-----------------|
+|POLLOCK                      |0.9527            |0.9655       |0.9517     |0.9635       |0.8414            |
+|CSV Wrangling                |0.9032            |0.9057       |0.8431     |0.8056       |0.7682            |
+|CSV Wrangling filtered CODEC |0.9155            |0.8947       |0.8425     |0.8000       |0.7803            |
+|CSV Wrangling MESSY          |0.8028            |0.7820       |0.7165     |0.6667       |0.6591            |
+|W3C-CSVW                     |0.9452            |0.9539       |0.6111     |0.9769       |0.9908            |
 
 The following table shows the recall (R), which measures the ability of the method to detect the specific dialect when it is actually present. The metric is calculated as follows
 
 $$R=\frac{TP}{TP+FN}$$
 
-|Data set                     |`CSVsniffer` |`CleverCSV`|`csv.Sniffer`|DuckDB `sniff_csv`|
-|:----------------------------|:------------|:----------|:------------|:-----------------|
-|POLLOCK                      |0.9790       |0.9787     |0.9231       |0.9760            |
-|CSV Wrangling                |0.8780       |0.8323     |0.7682       |0.8056            |
-|CSV Wrangling filtered CODEC |0.9297       |0.8770     |0.8136       |0.9115            |
-|CSV Wrangling MESSY          |0.9204       |0.8585     |0.7843       |0.8969            |
-|W3C-CSVW                     |0.9810       |0.9635     |0.5826       |0.9817            |
+|Data set                     |`CSVsniffer MADSE`|`CSVsniffer` |`CleverCSV`|`csv.Sniffer`|DuckDB `sniff_csv`|
+|:----------------------------|:-----------------|:------------|:----------|:------------|:-----------------|
+|POLLOCK                      |1.0               |0.9790       |0.9787     |0.9231       |0.9760            |
+|CSV Wrangling                |0.8537            |0.8780       |0.8323     |0.7682       |0.8056            |
+|CSV Wrangling filtered CODEC |1.0               |0.9297       |0.8770     |0.8136       |0.9115            |
+|CSV Wrangling MESSY          |1.0               |0.9204       |0.8585     |0.7843       |0.8969            |
+|W3C-CSVW                     |0.9904            |0.9810       |0.9635     |0.5826       |0.9817            |
 
 The below table shows the F1 score, which is the most polished measure of dialect detection accuracy. The metric is calculated as follows
 
 $$F1=2 \times \frac{P \times R}{P+R}$$
 
-|Data set                     |`CSVsniffer` |`CleverCSV`|`csv.Sniffer`|DuckDB `sniff_csv`|
-|:----------------------------|:------------|:----------|:------------|:-----------------|
-|POLLOCK                      |0.9722       |0.9650     |0.9429       |0.9037            |
-|CSV Wrangling                |0.8916       |0.8377     |0.7865       |0.7865            |
-|CSV Wrangling filtered CODEC |0.9119       |0.8594     |0.8067       |0.8408            |
-|CSV Wrangling MESSY          |0.8456       |0.7811     |0.7207       |0.7598            |
-|W3C-CSVW                     |0.9673       |0.7479     |0.7299       |0.9862            |
+|Data set                     |`CSVsniffer MADSE`|`CSVsniffer` |`CleverCSV`|`csv.Sniffer`|DuckDB `sniff_csv`|
+|:----------------------------|:-----------------|:------------|:----------|:------------|:-----------------|
+|POLLOCK                      |0.9758            |0.9722       |0.9650     |0.9429       |0.9037            |
+|CSV Wrangling                |0.8778            |0.8916       |0.8377     |0.7865       |0.7865            |
+|CSV Wrangling filtered CODEC |0.9559            |0.9119       |0.8594     |0.8067       |0.8408            |
+|CSV Wrangling MESSY          |0.8906            |0.8456       |0.7811     |0.7207       |0.7598            |
+|W3C-CSVW                     |0.9673            |0.9673       |0.7479     |0.7299       |0.9862            |
 
 Thus, the True Positive (TP) weighted F1 score for each tool is computed as
 
@@ -125,6 +126,7 @@ The computations are given in the below table.
 
 |Tool               |F1 score|
 |:------------------|:-------|
+|`CSVsniffer MADSE` |0.9378  |
 |`CSVsniffer`       |0.9260  |
 |DuckDB `sniff_csv` |0.8806  |
 |`CleverCSV`        |0.8425  |
@@ -132,11 +134,11 @@ The computations are given in the below table.
 
 ### Conclusions
 
-By studying the last table it is concluded that the _Table Uniformity_ method is able to predict and determine the dialects of CSV files with an accuracy of 92.60% using a sample of 10 records, while the others tools can reach 88.06% of accuracy. Surprisingly, the DuckDB `sniff_csv` function, loading 100 records, outperforms `CleverCSV` by 3.81%, perhaps due to its high performance on the W3C-CSVW database.
+By studying the last table it is concluded that the _Table Uniformity_ method is able to predict and determine the dialects of CSV files with an accuracy of 92.60% using a sample of 10 records, while the others tools can reach 88.06% of accuracy. Surprisingly, the DuckDB `sniff_csv` function, loading 100 records, outperforms `CleverCSV` by 3.81%, perhaps due to its high performance on the W3C-CSVW database. By increasing the sample to 50 and using Median Absolute Deviation and Shannon Entropy (MADSE), the library is able to predict CSV dialects with 93.78% accuracy.
 
-The proposed methodology shows an improvement of 4.54% over the DuckDB `sniff_csv` function and of 8.35% over `CleverCSV` using the same source code for data type detection as `CleverCSV`. A substantial improvement could derive from a stricter data detection, reducing the number of false positives detected in cells. On the other hand, `CleverCSV` doesn't shows significant accuracy improvements when reading all the data from the CSV files. This unexpected result helps to reaffirm that dialect detection does not always require reading all the information from the CSV files. 
+The proposed methodology shows an improvement of up to 5.72% over the DuckDB `sniff_csv` function and of 9.53% over `CleverCSV` using the same source code for data type detection as `CleverCSV`. At this point, the library has successfully achieved a substantial improvement resulting from the implementation of stricter metrics on tabular structures, reducing the false positives detected in cells. On the other hand, `CleverCSV` doesn't shows significant accuracy improvements when reading all the data from the CSV files. This unexpected result helps to reaffirm that dialect detection does not always require reading all the information from the CSV files. 
 
-The DuckDB `sniff_csv` function was the big revelation, proving to be superior to `CleverCSV` in accuracy and performance. So we can conclude that the _Table Uniformity_ approach continues to represent the state-of-the-art methodology in the dialect detection field, despite the fact that the increased accuracy and robustness leads to an increase in execution time. An alternative would be to use `Pandas` to avoid the overhead of using the file iterator to pre-filter the lines to be used in the creation of the tables to be evaluated. 
+The DuckDB `sniff_csv` function was the big revelation, proving to be superior to `CleverCSV` in accuracy and performance. So we can conclude that the _Table Uniformity_ approach represents the state-of-the-art methodology in the dialect detection field, despite the fact that the increased accuracy and robustness leads to an increase in execution time. An alternative would be to use `Pandas` to avoid the overhead of using the file iterator to pre-filter the lines to be used in the creation of the tables to be evaluated. 
 
 ## Requirements
 
