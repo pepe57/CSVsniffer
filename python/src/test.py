@@ -29,5 +29,5 @@ def main(basePath:str, fileName:str):
 if __name__ == "__main__":
     #Working dir
     path = os.getcwd()
-    filename = 'iometeroutput.csv'
+    filename = 'baselog.csv' #iometeroutput.csv, 
     main(path, filename)
