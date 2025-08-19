@@ -14,7 +14,7 @@
 +[Auto_Tone_sub205_over.csv]: --> CSVsniffer detected: delimiter = ',', quotechar = '"'
 +[Auto_Tone_sub242_nov.csv]: --> CSVsniffer detected: delimiter = ',', quotechar = '"'
 +[Auto_Tone_sub315_day1.csv]: --> CSVsniffer detected: delimiter = ',', quotechar = "'"
-X[Batch_3250493_batch_results.csv]: --> CSVsniffer detected: delimiter = ' ', quotechar = '"'| EXPECTED:{delimiter = 'comma', quotechar = 'doublequote'}
++[Batch_3250493_batch_results.csv]: --> CSVsniffer detected: delimiter = ',', quotechar = '"'
 +[Businesses with a rateable value of less than $12,000 - March 2016.csv]: --> CSVsniffer detected: delimiter = ',', quotechar = '"'
 +[business_expenses_apr_jun_14_peter_lewis.csv]: --> CSVsniffer detected: delimiter = ',', quotechar = '"'
 +[Camp Palacios - Humidity.csv]: --> CSVsniffer detected: delimiter = ',', quotechar = '"'
@@ -87,7 +87,7 @@ X[Batch_3250493_batch_results.csv]: --> CSVsniffer detected: delimiter = ' ', qu
 X[picasso.csv]: --> CSVsniffer detected: delimiter = ',', quotechar = '"'| EXPECTED:{delimiter = 'tab', quotechar = 'doublequote'}
 X[Pipe character is more frequent than the comma.csv]: --> CSVsniffer detected: delimiter = '|', quotechar = '"'| EXPECTED:{delimiter = 'comma', quotechar = 'doublequote'}
 X[Pipe character is more frequent than the semicolon.csv]: --> CSVsniffer detected: delimiter = '|', quotechar = '"'| EXPECTED:{delimiter = 'semicolon', quotechar = 'doublequote'}
-X[planning-application-aug-17.csv]: --> CSVsniffer detected: delimiter = ';', quotechar = '"'| EXPECTED:{delimiter = 'comma', quotechar = 'doublequote'}
++[planning-application-aug-17.csv]: --> CSVsniffer detected: delimiter = ',', quotechar = '"'
 +[PLA_6%Talc-1hz.csv]: --> CSVsniffer detected: delimiter = ',', quotechar = '"'
 +[prison-and-probation-ombudsman__30-09-2014__justice_PPO-September-Return-senior.csv]: --> CSVsniffer detected: delimiter = ',', quotechar = '"'
 +[pssave_traindata_m=10_n=10_timelow=15_timehight=30_numofloop=2000.csv]: --> CSVsniffer detected: delimiter = ',', quotechar = '"'
@@ -137,7 +137,7 @@ X[planning-application-aug-17.csv]: --> CSVsniffer detected: delimiter = ';', qu
 X[testGeometries.txt]: --> CSVsniffer detected: delimiter = ',', quotechar = '"'| EXPECTED:{delimiter = 'semicolon', quotechar = 'doublequote'}
 +[tetranatrolite.csv]: --> CSVsniffer detected: delimiter = ';', quotechar = '"'
 +[trinity-house__31-03-2015__dft_310315-Trinity-House-Organogram-ver-1-junior.csv]: --> CSVsniffer detected: delimiter = ',', quotechar = '"'
-X[Undefined field delimiter.csv]: --> CSVsniffer detected: delimiter = ' ', quotechar = "'"| EXPECTED:{delimiter = 'comma', quotechar = 'doublequote'}
+X[Undefined field delimiter.csv]: --> CSVsniffer detected: delimiter = '\t', quotechar = '"'| EXPECTED:{delimiter = 'comma', quotechar = 'doublequote'}
 +[vissim_data_conf2473_i12_v2026.csv]: --> CSVsniffer detected: delimiter = ';', quotechar = '"'
 +[vissim_data_conf2473_i7_v1987.csv]: --> CSVsniffer detected: delimiter = ';', quotechar = '"'
 +[W32.csv]: --> CSVsniffer detected: delimiter = ',', quotechar = '"'
@@ -146,16 +146,16 @@ X[Undefined field delimiter.csv]: --> CSVsniffer detected: delimiter = ' ', quot
 +[Wakefield Council Procurement Card Transactions 2018-19 Q2.csv]: --> CSVsniffer detected: delimiter = ',', quotechar = '"'
 +[Wine_Cellar_Consumption_dataset_14-15.csv]: --> CSVsniffer detected: delimiter = ',', quotechar = '"'
 +[workforce-management-information-dft_201706.csv]: --> CSVsniffer detected: delimiter = ',', quotechar = '"'
-[Passed test ratio]--: 95.2703%
-[Delimiter ratio]--: 95.2703%
+[Passed test ratio]--: 96.6216%
+[Delimiter ratio]--: 96.6216%
 [Failure ratio]--: 0.0%
-[Elapsed time]--: 39.74 seconds
+[Elapsed time]--: 29.34 seconds
 <---------------------------------------------------------------------------------------->
-True Positive (TP): 141
-False Positive (FP): 7
+True Positive (TP): 143
+False Positive (FP): 5
 False Negative (FN): 0
 #
-Precision (P): 0.9527
+Precision (P): 0.9662
 Recall (R): 1.0
-F1 score: 0.9758
-Weighted F1 score for 148 files: 137.5878
+F1 score: 0.9828
+Weighted F1 score for 148 files: 140.5404
