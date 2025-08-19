@@ -196,5 +196,5 @@ class t_uniformity:
         n = len(self.table)
         if tau_1 + n == 0 or tau_3 + 1 == 0:
             return 0.0
-        score = (tau_0 / delta) + (1 / (tau_1 + n)) + (tau_2 / delta) + (1 / ((1 + tau_3) * n)) * lambda_sum
+        score = ((tau_0 / delta) + (1 / (tau_1 + n)) + (tau_2 / delta) + (1 / ((tau_3 + n)))) * lambda_sum
         return score
